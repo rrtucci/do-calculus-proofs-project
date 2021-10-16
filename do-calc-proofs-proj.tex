@@ -5,18 +5,18 @@ In Chapter \ref{ch-do-calc}
 of Bayesuvius,
 we explained Do Calculus
 but referred to this
-chapter for proofs 
-of claims that 
+chapter for proofs
+of claims that
 use Do Calculus.
-In this chapter, we've 
+In this chapter, we've
 aggregated
- all proofs 
-throughout the book
+ all proofs, from
+throughout the book,
 of claims that use Do Calculus.
 
 Note that even though the 3
 rules of Do Calculus
-are great for proving 
+are great for proving
 adjustment formulas
 for general classes of DAGs,
 they are sometimes overkill
@@ -27,7 +27,7 @@ After all,  the
  3 rules of Do Calculus
 are a consequence
 of the d-separation theorem.
-Hence, all adjustment 
+Hence, all adjustment
 formulas should be
 provable from first principles,
 assuming only
@@ -35,23 +35,23 @@ the d-separation theorem
 and the standard rules of
 probability theory.
 
-We will use the
+We use the
  following conventions.
 Random values are underlined
 and their values are not.
-For example, $\rva=a$ means 
+For example, $\rva=a$ means
 the random variable
 $\rva$ takes the value $a$.
-Diagrams 
-with nodes that are 
-underlined represent 
+Diagrams
+with nodes that are
+underlined represent
 Bayesian Networks (bnets)
-and the same diagram 
+and the same diagram
 with the letters not underlined
 represents a specific
 instantiation of that bnet.
 For example $\rva\rarrow\rvb$
-represents the bnet with 
+represents the bnet with
 conditional probability distribution
 $P(b|a)$,
 whereas  $a\rarrow b$
@@ -80,7 +80,7 @@ where $\sum a$
 means the random variable
 $\rva$ is summed over.
 
-Unobserved nodes are 
+Unobserved nodes are
 indicated by enclosing them
 in a dashed circle.
 
@@ -88,7 +88,7 @@ in a dashed circle.
 Adjustment Formula)
 \label{cl-backdoor-proof}
 
-If 
+If
 $
 \xymatrix{
 {\rvz}\ar[d]\ar[rd]
@@ -189,7 +189,7 @@ P(z|\cald\rvx=x)$
 \quad by Probability Axioms
 \\
 \color{red}
-$=\sum_z 
+$=\sum_z
 P(y|x, z)
 P(z|\cald\rvx=x)$
 \\
@@ -214,9 +214,9 @@ x
 &y
 }
 $
-\\ 
+\\
 \color{red}
-$=\sum_z 
+$=\sum_z
 P(y|x, z)
 P(z)$
 \\
@@ -247,7 +247,7 @@ $
 Adjustment Formula)
 \label{cl-frontdoor-proof}
 
-If 
+If
 $
 \xymatrix{
 &*++[F-o]{\rvc}\ar[ld]\ar[rd]
@@ -285,7 +285,7 @@ x´\ar[r]
 \begin{longtable}{l}
 $\color{red}
 P(y|\cald\rvx=x)=
-\sum_m 
+\sum_m
 P(y|\cald\rvx=x, m)
 P(m|\cald\rvx=x)$
 \\
@@ -308,7 +308,7 @@ P(m|\cald\rvx=x)$
 \\
 \\
 $\color{red}=
-\sum_m 
+\sum_m
 P(y|\cald\rvx=x, \cald\rvm=m)
 P(m|\cald\rvx=x)$
 \\
@@ -325,7 +325,7 @@ by Rule 2
 \end{tabular}
 \\
 $\color{red}=
-\sum_m 
+\sum_m
 P(y|\cald\rvx=x, \cald\rvm=m)
 P(m| x)$
 \\
@@ -344,7 +344,7 @@ by Rule 2
 \end{tabular}
 \\
 $\color{red}=
-\sum_m 
+\sum_m
 P(y|\cald\rvm=m)
 P(m|x)$
 \\
@@ -366,7 +366,7 @@ if condition on $\cald \rvm$.
 \\
 $\color{red}=
 \sum_{x'}
-\sum_m 
+\sum_m
 P(y|\cald\rvm=m, x')
 P(x'|\cald\rvm=m)
 P(m|x)$
@@ -383,7 +383,7 @@ x\ar[ru]
 \\
 $\color{red}=
 \sum_{x'}
-\sum_m 
+\sum_m
 P(y|m, x')
 P(x'|\cald\rvm=m)
 P(m|x)$
@@ -404,7 +404,7 @@ by Rule 2
 \\
 $\color{red}=
 \sum_{x'}
-\sum_m 
+\sum_m
 P(y|m, x')
 P(x')
 P(m|x)$
@@ -432,14 +432,14 @@ between $\cald\rvm$ and $\rvx'$.
 \begin{longtable}{l}
 $\color{red}
 P(y|\cald\rvx=x)=
-\sum_m 
+\sum_m
 P(y|\cald\rvx=x, m)
 P(m|\cald\rvx=x)$
 \\
 \quad by Probability Axioms
 \\
 $\color{red}=
-\sum_m 
+\sum_m
 P(y|\cald\rvx=x, \cald\rvm=m)
 P(m|\cald\rvx=x)$
 \\
@@ -464,7 +464,7 @@ $\xymatrix{
 }$
 \\
 $\color{red}=
-\sum_m 
+\sum_m
 P(y|\cald\rvx=x, \cald\rvm=m)
 P(m| x)$
 \\
@@ -486,7 +486,7 @@ x&m\ar[r]&\rvy
 }$
 \\
 $\color{red}=
-\sum_m 
+\sum_m
 P(y|\cald\rvm=m)
 P(m|x)$
 \\
@@ -496,8 +496,8 @@ P(m|x)$
 \\
 \quad by Rule 3: $\rulethreepic$
 \\
-\quad 
- in 
+\quad
+ in
 $\cald_\rvx\cald_\rvm G:$
 $\xymatrix{
 &*++[F-o]{c}\ar[rd]
@@ -513,7 +513,7 @@ $
 \\
 $\color{red}=
 \sum_{x'}
-\sum_m 
+\sum_m
 P(y|\cald\rvm=m, x')
 P(x'|\cald\rvm=m)
 P(m|x)$
@@ -522,7 +522,7 @@ P(m|x)$
 \\
 $\color{red}=
 \sum_{x'}
-\sum_m 
+\sum_m
 P(y|m, x')
 P(x'|\cald\rvm=m)
 P(m|x)$
@@ -534,7 +534,7 @@ P(m|x)$
 \quad by Rule 2: $\ruletwopic$
 \\
 \quad
-in 
+in
 $\call_\rvm G:$
 $\xymatrix{
 &*++[F-o]{c}\ar[rd]\ar[ld]
@@ -555,7 +555,7 @@ $
 \\
 $\color{red}=
 \sum_{x'}
-\sum_m 
+\sum_m
 P(y|m, x')
 P(x')
 P(m|x)$
@@ -567,7 +567,7 @@ P(x')$
 \quad by Rule 3: $\rulethreepic$
 \\
 \quad
- in 
+ in
 $\cald_\rvm G:$
 $\xymatrix{
 &*++[F-o]{c}\ar[rd]\ar[ld]
@@ -591,7 +591,7 @@ $
 
 \begin{claim} (from Ref.\cite{hunermund2021})
 
-If 
+If
 $
 \xymatrix{
 &\rvw\ar[d]\ar[ddr]\ar@/^1.5pc/@{<-->}[ddr]|\rvu
