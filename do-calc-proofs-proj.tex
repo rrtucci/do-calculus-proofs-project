@@ -134,7 +134,7 @@ $\xymatrix{
 \xymatrix{
 \sum z\ar[dr]
 \\
-\cald \rvx=x\ar[r]\ar[u]
+\cald \rvx=x\ar[r]\ar[u]^0
 &y
 }
 $
@@ -146,7 +146,7 @@ $=\sum_z P(y|x,z)P(z|\cald\rvx=x)$
 \xymatrix{
 \sum z\ar[dr]
 \\
-\cald \rvx=x\ar[u]
+\cald \rvx=x\ar[u]^0
 &y
 \\x\ar[ur]
 }
@@ -301,7 +301,7 @@ P(m|\cald\rvx=x)$
 \xymatrix{
 &
 \\
-\cald \rvx=x\ar[r]\ar@/_1.2pc/[rr]
+\cald \rvx=x\ar[r]\ar@/_1.2pc/[rr]_0
 &\sum m\ar[r]
 &y
 }
@@ -314,7 +314,7 @@ P(m|\cald\rvx=x)$
 \\
 \xymatrix{\\=\sum_m }
 \xymatrix{
-\cald \rvx=x\ar[r]\ar@/_1.2pc/[rr]
+\cald \rvx=x\ar[r]\ar@/_1.2pc/[rr]_0
 &m&y
 \\
 &\cald\rvm=m\ar[ru]
@@ -331,7 +331,7 @@ P(m| x)$
 \\
 \xymatrix{\\=\sum_m }
 \xymatrix{
-\cald\rvx=x\ar@/_1pc/[rr]
+\cald\rvx=x\ar@/_1pc/[rr]_0
 &m
 &y
 \\
@@ -377,7 +377,7 @@ P(m|x)$
 &y
 \\
 x\ar[ru]
-&\cald\rvm=m\ar[ru]\ar[r]
+&\cald\rvm=m\ar[ru]\ar[r]_0
 &\sum x'\ar[u]
 }
 \\
@@ -394,7 +394,7 @@ P(m|x)$
 &y
 \\
 x\ar[ru]
-&\cald\rvm=m\ar[r]
+&\cald\rvm=m\ar[r]_0
 &\sum x'\ar[u]
 }
 \begin{tabular}{l}
@@ -661,7 +661,7 @@ P(e|\cald\rvc=c)$
 $
 \xymatrix{
 \cald\rvc=c\ar[rr]
-\ar[dr]
+\ar[dr]_0
 &&y
 \\
 &\sum e\ar[ru]
@@ -679,7 +679,7 @@ $
 c\ar[rrd]
 \\
 \cald\rvc=c
-\ar[dr]
+\ar[dr]_0
 &&y
 \\
 &\sum e\ar[ru]
@@ -702,7 +702,11 @@ c\ar[rr]
 &\sum e\ar[ru]
 }$
 \begin{tabular}{l}\\
-by Rule 3
+by Rule 3.
+\\ No information
+transmission\\
+between $\cald \rvc$
+and $\rve$.
 \end{tabular}
 \end{longtable}
 .\qed
@@ -780,7 +784,7 @@ P(z|\cald\rvx=x, w, \rvs=1)$
 &\rvs=1\ar[l]\ar[d]\ar[dll]
 \\
 \sum z\ar@/_1.5pc/[rr]
-&\cald\rvx=x\ar[r]\ar[l]
+&\cald\rvx=x\ar[r]\ar[l]^0
 &y
 }
 \\
@@ -795,7 +799,7 @@ P(z|\cald\rvx=x, w, \rvs=1)$
 &\rvs=1\ar[l]\ar[d]\ar[dll]
 \\
 \sum z\ar@/_1.5pc/[rr]
-&\cald\rvx=x\ar[l]
+&\cald\rvx=x\ar[l]^0
 &y
 \\
 &x\ar[ur]
@@ -816,11 +820,14 @@ P(z| w, \rvs=1)$
 &\rvs=1\ar[d]\ar[dll]
 \\
 \sum z \ar@/_1.5pc/[rr]
-&\rvx=x\ar[r]
+&x\ar[r]
 &y
 }
 \begin{tabular}{l}\\
 by Rule 3.
+\\
+No info transmission\\
+between $\cald \rvx$ and $\rvz$.
 \end{tabular}
 \end{longtable}
 
