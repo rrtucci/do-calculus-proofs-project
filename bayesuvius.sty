@@ -82,7 +82,7 @@
 \newcommand{\CC}[0]{{ \mathbb{C}} }
 \newcommand{\ground}{{}_{\stackrel{\stackrel{\displaystyle{\bot}}{-}}{.}}}
 \newcommand{\norm}[1]{\parallel#1\parallel}
-\newcommand{\eqdef}[0]{\;\;\stackrel{\text{def}}{=}\;\;} 
+\newcommand{\eqdef}[0]{\;\;\stackrel{\text{def}}{=}\;\;}
 
 \newcommand{\rva}[0]{{\ul{a}}}
 \newcommand{\rvb}[0]{{\ul{b}}}
@@ -219,7 +219,7 @@
 \newcommand{\bool}[0]{\{0,1\}}
 
 \newcommand{\argmin}{\mathop{\mathrm{argmin}}\limits}
-\newcommand{\argmax}{\mathop{\mathrm{argmax}}\limits}  
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}\limits}
 
 \newcommand{\softmax}[0]{{\rm softmax}}
 
@@ -398,31 +398,32 @@ an(\rvs.)\ar[r]&s.\ar[ru]
 
 \newcommand{\bdoordef}[0]{
 Suppose that we have access to data
-that allows us to 
+that allows us to
 estimate a probability
-distribution 
+distribution
  $P(x., y., z.)$.
 Hence, the variables
-$\rvx., \rvy., \rvz.$ are 
+$\rvx., \rvy., \rvz.$ are
 ALL the observed (i.e, not hidden).
-Then we say that the backdoor
-$\rvz.$ satisfies the 
+Then we say that the
+backdoor $\rvz.$
+satisfies the
 {\bf backdoor adjustment criterion}
 relative to $(\rvx., \rvy.)$
 if
 \begin{enumerate}
-\item 
-All backdoor paths from $\rvx.$ 
-to $\rvy.$ 
+\item
+All backdoor paths from $\rvx.$
+to $\rvy.$
  are blocked by  conditioning on
  $\rvz.$.
-\item 
+\item
 $\rvz. \cap de(\rvx.)=\emptyset$.
 \end{enumerate}
 }
 
 \newcommand{\bdoorclaim}[0]{
-If $\rvz.$ satisfies the 
+If $\rvz.$ satisfies the
 backdoor criterion relative to
  $(\rvx., \rvy.)$, then
 
@@ -448,27 +449,28 @@ $\rvz.$ is summed over.
 
 \newcommand{\fdoordef}[0]{
 Suppose that we have access to data
-that allows us to 
+that allows us to
 estimate a probability
-distribution 
+distribution
  $P(x., m., y.)$.
 Hence, the variables
-$\rvx., \rvm., \rvy.$ are 
+$\rvx., \rvm., \rvy.$ are
 ALL the observed (i.e, not hidden).
-Then we say that the front-door
-$\rvm.$ satisfies the 
-{\bf front-door adjustment criterion} relative
- to $(\rvx., \rvy.)$
+Then we say that
+the frontdoor $\rvm.$
+satisfies the
+{\bf frontdoor adjustment criterion}
+relative to $(\rvx., \rvy.)$
 if
 \begin{enumerate}
-\item 
+\item
 All directed paths from
 $\rvx.$ to $\rvy.$ are intercepted by
 (i.e., have a node in) $\rvm.$.
-\item 
+\item
 All backdoor paths from $\rvx.$ to
 $\rvm.$ are blocked (by $\emptyset$).
-\item 
+\item
 All backdoor paths from
 on $\rvm.$ to $\rvy.$
 are blocked by conditioning
@@ -477,31 +479,31 @@ on  $\rvx.$.
 }
 
 \newcommand{\fdoorclaim}[0]{
-If $\rvm.$ satisfies the 
-front-door criterion 
+If $\rvm.$ satisfies the
+frontdoor criterion
 relative to $(\rvx., \rvy.)$,
 and $P(x.,m.)>0$, then
 
 \beqa
 P(y. | \cald \rvx.=x.)&=&\sum_{m.}
-\underbrace{\left[\sum_{c.}
-P(y.|c., m.)P(c.)\right]}_
-{P(y.|\cald \rvm.=m.)} 
+\underbrace{\left[\sum_{x'.}
+P(y.|x'., m.)P(x'.)\right]}_
+{P(y.|\cald \rvm.=m.)}
 \underbrace{P(m.|x.)}_
 {P(m.|\cald \rvx.=x.)}
 \\
 &=&
 \xymatrix{
-&\sum c.\ar[dr]
+&\sum x'.\ar[dr]
 \\
 x.´\ar[r]
 &\sum m.\ar[r]&y.
 }
 \eeqa
-where $\sum c.$ and
+where $\sum x'.$ and
 $\sum m.$
 means nodes
-$\rvc.$ and $\rvm.$
+$\rvx'.$ and $\rvm.$
 are summed over.
 }
 
@@ -515,20 +517,20 @@ $H(\rva:\rvb)=0\implies H(\rvb:\rva)=0$}
 
 %Decomposition
 \newcommand{\decrule}[0]{
-$\rva\perp_P\rvb, \rvc\implies 
+$\rva\perp_P\rvb, \rvc\implies
 \rva\perp_P\rvb \text{ and } \rva\perp_P\rvc$}
 
 \newcommand{\decruleH}[0]{
-$H(\rva:\rvb, \rvc)=0\implies 
+$H(\rva:\rvb, \rvc)=0\implies
 H(\rva:\rvb)=0 \text{ and } H(\rva:\rvc)=0$}
 
 %Weak Union
 \newcommand{\wearule}[0]{
-$\rva\perp_P \rvb, \rvc \implies 
+$\rva\perp_P \rvb, \rvc \implies
 \rva\perp_P\rvb|\rvc\text{ and }\rva\perp_P\rvc|\rvb$}
 
 \newcommand{\wearuleH}[0]{
-$H(\rva:\rvb, \rvc)=0 \implies 
+$H(\rva:\rvb, \rvc)=0 \implies
 H(\rva:\rvb|\rvc)=0\text{ and }H(\rva:\rvc|\rvb)=0$}
 
 %Contraction
