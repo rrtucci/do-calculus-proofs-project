@@ -1,3 +1,45 @@
+\newcommand{\bnetInstantiations}[0]{
+Random variables are underlined
+and their values are not.
+For example, $\rva=a$ means
+the random variable
+$\rva$ takes the value $a$.
+Diagrams
+with nodes that are
+underlined represent
+Bayesian Networks (bnets)
+and the same diagram
+with the letters not underlined
+represents a specific
+{\bf instantiation} of that bnet.
+For example $\rva\rarrow\rvb$
+represents the bnet with
+conditional probability distribution
+$P(b|a)$,
+whereas  $a\rarrow b$
+represents $P(b|a)$ itself.
+
+If $\rva$ is a root node,
+then $\sum a$ signifies
+a weighted sum $\sum_a P(a)$.
+For example, $\sum a\rarrow b=\sum_a P(a)P(b|a)$.
+If $\rva$ is not
+a root node
+as in $x\rarrow\sum a \rarrow y=
+\sum_a P(y|a)P(a|x) $, then
+$\sum a$ signifies
+a simple unweighted sum $\sum_a$.}
+
+
+\newcommand{\hiddenNodes}[0]{
+Unobserved nodes are
+indicated by enclosing them
+in a dashed circle. For example,
+$\xymatrix{*++[F-o]{u}}$.
+}
+
+
+
 \newcommand{\selectionGraphs}
 [0]{In a selection
 diagram
@@ -516,3 +558,58 @@ P(m|d', \xi)P(\xi)
 \eeq
 }
 
+
+\newcommand{\decSeqBackDoor}[0]{(Sequential
+backdoor adjustment formula)
+
+If
+\xymatrix{
+\rvz_0\ar[r]\ar@/^1pc/[rr]\ar[drrr]
+\ar[dd]
+&\rvz_1\ar[r]\ar[drr]
+\ar[dd]
+&\rvz_2\ar[dr]
+\ar[dd]
+\\
+&&&\rvy
+\\
+\rvx_0\ar[uur]\ar[uurr]\ar[urrr]
+\ar[r]\ar@/_1pc/[rr]
+&\rvx_1\ar[uur]
+\ar[urr]\ar[r]
+&\rvx_2
+\ar[ur]
+}
+then
+
+\begin{align}
+P(y|\cald \rvx^3=x^3)
+&=
+\calq(y|x^3)
+\\
+\nonumber
+\\
+&
+\xymatrix{\\=}
+\xymatrix{
+\sum z_0\ar[r]\ar@/^1pc/[rr]
+\ar[drrr]
+&\sum z_1\ar[r]
+\ar[drr]
+&\sum z_2
+\ar[dr]
+\\
+&&&y
+\\
+x_0\ar[uur]\ar[uurr]
+\ar[urrr]
+&x_1\ar[uur]
+\ar[urr]
+&x_2
+\ar[ur]
+}
+\end{align}
+The result
+shown here for $n=3$
+is true for any integer $n\geq 1$.
+}
