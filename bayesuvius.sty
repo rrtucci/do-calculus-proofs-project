@@ -24,7 +24,7 @@
 \usepackage{longtable}
 
 %\usepackage{fdsymbol}
-\usepackage{animate}% play animation
+%\usepackage{animate}% play animation
 
 \usepackage[vlined,ruled]{algorithm2e}
 \newcommand{\mycommfont}[1]{\small\ttfamily\textcolor{blue}{#1}}
@@ -32,6 +32,8 @@
 
 %highlighting
 \usepackage{mdframed}
+
+\usepackage[makeroom]{cancel}
 
 \usepackage{pdfpages}
 \usepackage{hyperxmp}
@@ -43,6 +45,7 @@
 \topskip=0in
 \textheight=8.5in
 \footskip=.5in
+
 
 \paperwidth=8.5in
 \oddsidemargin=.25in
@@ -60,6 +63,7 @@
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\av}[1]{\left\langle#1\right\rangle}
 \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\der}[2]{\frac{d#1}{d#2}}
 \newcommand{\tr}[0]{{\rm tr }}
 \newcommand{\beq}{\begin{equation}}
 \newcommand{\eeq}{\end{equation}}
@@ -80,6 +84,7 @@
 \newcommand{\ZZ}[0]{ {\mathbb{Z}}}
 \newcommand{\RR}[0]{{ \mathbb{R}} }
 \newcommand{\CC}[0]{{ \mathbb{C}} }
+\newcommand{\XX}[0]{{ \mathbb{X}} }
 \newcommand{\ground}{{}_{\stackrel{\stackrel{\displaystyle{\bot}}{-}}{.}}}
 \newcommand{\norm}[1]{\parallel#1\parallel}
 \newcommand{\eqdef}[0]{\;\;\stackrel{\text{def}}{=}\;\;}
@@ -139,6 +144,7 @@
 \newcommand{\rvmu}[0]{{\ul{\mu}}}
 \newcommand{\rvsig}[0]{{\ul{\sigma}}}
 \newcommand{\rvDel}[0]{{\ul{\Delta}}}
+\newcommand{\rvtau}[0]{{\ul{\tau}}}
 
 \newcommand{\cala}[0]{{\cal A}}
 \newcommand{\calb}[0]{{\cal B}}
@@ -165,6 +171,15 @@
 \newcommand{\calx}[0]{{\cal X}}
 \newcommand{\caly}[0]{{\cal Y}}
 \newcommand{\calz}[0]{{\cal Z}}
+
+\newcommand{\Pmat}[4]{\calp\left[
+\begin{array}{cc}#1&#2\\#3&#4
+\end{array}\right]}
+
+%\newcommand{\PN}[0]{PN^{0,0}_{1,1}}
+%\newcommand{\PS}[0]{PS^{1,1}_{0,0}}
+\newcommand{\PN}[0]{PN}
+\newcommand{\PS}[0]{PS}
 
 \newcommand{\lam}[0]{\lambda}
 \newcommand{\Lam}[0]{\Lambda}
@@ -196,10 +211,10 @@
 \newcommand{\vechy}[0]{{\vec{\haty}}}
 \newcommand{\vtheta}[0]{{\vec{\theta}}}
 
-\newcommand{\haty}[0]{{\hat{y}}}
-\newcommand{\hatx}[0]{{\hat{x}}}
-\newcommand{\hata}[0]{{\hat{a}}}
-\newcommand{\hatr}[0]{{\hat{r}}}
+\newcommand{\haty}[0]{{\widehat{y}}}
+\newcommand{\hatx}[0]{{\widehat{x}}}
+\newcommand{\hata}[0]{{\widehat{a}}}
+\newcommand{\hatr}[0]{{\widehat{r}}}
 
 
 \newcommand{\cond}[0]{{\:\mathbf{|}\:}}
@@ -209,13 +224,20 @@
 \newcommand{\indi}[0]{\mathbbm{1}}
 \newcommand{\smoid}[0]{{\rm smoid}}
 \newcommand{\lodds}[0]{{\rm lodds}}
+\newcommand{\expit}[0]{{\rm expit}}
+\newcommand{\logit}[0]{{\rm logit}}
 \newcommand{\sign}[0]{{\rm sign}}
 
 \renewcommand{\labelitemii}{$\bullet$}
 
-\newcommand{\tilx}[0]{{\tilde{x}}}
-\newcommand{\tile}[0]{{\tilde{e}}}
-\newcommand{\tilu}[0]{{\tilde{u}}}
+\newcommand{\HAT}[1]{\widehat{#1}}
+\newcommand{\TIL}[1]{\widetilde{#1}}
+\newcommand{\tild}[0]{{\TIL{d}}}
+\newcommand{\tile}[0]{{\TIL{e}}}
+\newcommand{\tilg}[0]{{\TIL{g}}}
+\newcommand{\tilu}[0]{{\TIL{u}}}
+\newcommand{\tilx}[0]{{\TIL{x}}}
+
 
 \newcommand{\ucalm}[0]{\ul{\calm}}
 
@@ -228,6 +250,11 @@
 
 \newcommand{\A}[0]{\wedge}
 \newcommand{\V}[0]{\vee}
+\newcommand{\xor}{\oplus}
+\newcommand{\bigA}[0]{\bigwedge}
+\newcommand{\bigV}[0]{\bigvee}
+\newcommand{\bigxor}{\bigoplus}
+
 
 \newcommand{\rdart}[0]{\Rightarrow}
 \newcommand{\ldart}[0]{\Leftarrow}
@@ -237,6 +264,9 @@
 \newcommand{\ptp}[0]{{(t)}}
 
 \newcommand{\tseries}[1]{{\{#1\}_{\forall t}}}
+
+\newcommand{\xbeta}[0]{X_\s^T\beta}
+\newcommand{\xtau}[0]{X_\s^T\tau}
 
 %arguments phi1, phi2, phi3, e
 \newcommand{\rbd}[4]{
@@ -619,10 +649,11 @@ P(x_1=1\cond x_0=0,x_2=1,  \theta)
 }
 
 
-\newcommand{\td}[0]{{\tilde{d}}}
-\newcommand{\rvtd}[0]{{\ul{\tilde{d}}}}
-\newcommand{\tx}[0]{{\tilde{x}}}
-\newcommand{\rvtx}[0]{{\ul{\tilde{x}}}}
+\newcommand{\td}[0]{{\TIL{d}}}
+\newcommand{\rvtd}[0]{{\ul{\TIL{d}}}}
+\newcommand{\tx}[0]{{\TIL{x}}}
+\newcommand{\tmu}[0]{{\TIL{\mu}}}
+\newcommand{\rvtx}[0]{{\ul{\TIL{x}}}}
 
 \newcommand{\mlarr}[0]{\xrightarrow{\rm ML-fit}}
 \newcommand{\lrarr}[0]{\xrightarrow{\rm LR-fit}}
@@ -650,7 +681,7 @@ Then we say that the
 the multinode
 of ``covariates" $\rvz^n$
 satisfies the
-{\bf sequential backdoor adjustment criterion}
+{\bf sequential backdoor (SBD) adjustment criterion}
 relative to $(\rvx^n, \rvy)$
 if for all $t\in\{0,1, \ldots, n-1\}$,
 

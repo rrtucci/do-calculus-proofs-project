@@ -4,32 +4,48 @@ and their values are not.
 For example, $\rva=a$ means
 the random variable
 $\rva$ takes the value $a$.
-Diagrams
-with nodes that are
-underlined represent
-Bayesian Networks (bnets)
-and the same diagram
+A diagram
+with all its nodes
+underlined represents a
+Bayesian Network (bnet),
+whereas the same diagram
 with the letters not underlined
 represents a specific
 {\bf instantiation} of that bnet.
-For example $\rva\rarrow\rvb$
+For example $\rva\rarrow\rvb\rarrow \rvc$
 represents the bnet with
-conditional probability distribution
-$P(b|a)$,
-whereas  $a\rarrow b$
-represents $P(b|a)$ itself.
+full probability distribution
+$P(c|b)P(b|a)P(a)$,
+whereas  $a\rarrow b\rarrow c$
+represents $P(c|b)P(b|a)$. Note that, for convenience,
+we define $a\rarrow b\rarrow c$ to
+exclude the priors of root nodes such as $P(a)$.
 
 If $\rva$ is a root node,
 then $\sum a$ signifies
 a weighted sum $\sum_a P(a)$.
-For example, $\sum a\rarrow b=\sum_a P(a)P(b|a)$.
-If $\rva$ is not
-a root node
-as in $x\rarrow\sum a \rarrow y=
-\sum_a P(y|a)P(a|x) $, then
-$\sum a$ signifies
-a simple unweighted sum $\sum_a$.}
+For example, 
 
+\beq\sum a\rarrow b\rarrow c=\sum_a P(c|b)P(b|a)P(a)
+\eeq
+If $\rva$ is not
+a root node, then
+$\sum a$ signifies
+a simple unweighted sum $\sum_a$.
+For example,
+
+\beq
+x\rarrow\sum a \rarrow y=
+\sum_a P(y|a)P(a|x)
+\eeq
+
+Two bnets are equated if their full probability
+distributions (i.e.,
+their full instantiations) are equal numerically.
+For example,  
+\beq
+\rva\rarrow\rvb\rarrow \rvc = P(c|b)P(b|a)P(a)= \rva\larrow\rvb\larrow\rvc
+\eeq}
 
 \newcommand{\hiddenNodes}[0]{
 Unobserved nodes are
@@ -43,7 +59,7 @@ $\xymatrix{*++[F-o]{u}}$.
 \newcommand{\selectionGraphs}
 [0]{In a selection
 diagram
-with a selection
+with a selection 
 node $\rvs\in \bool$,
 if  a node $\rvx$
 has parents $pa(\rvx)$
@@ -51,14 +67,23 @@ where $\rvs\not\in pa(\rvx)$,
 then the
 TPM of $\rvx$ is $P(x|pa(x))$.
 If, on the other hand,
-$\rvx$ has
-parents $pa(\rvx)\cup
-\rvs$, then
+$\rvx$ has 
+parents $pa(\rvx)=pa'(\rvx)\cup
+\rvs$, where $pa'(\rvx)=pa(\rvx)-\rvs$, then
 the TPM of $\rvx$ is
-$P(x|pa(x), s)$, where
-$P(x|pa(x), \rvs=0)=P(x|pa(x))$
-and $P(x|pa(x),\rvs=1)=
-P^*(x|pa(x))$.}
+
+\beq
+P(x|pa'(x), s)=
+\left\{
+\begin{array}{ll}
+P(x|pa'(x))& \text{ if } s=0
+\\
+P^*(x|pa'(x))
+& \text{ if } s=1
+\end{array}
+\right.
+\eeq
+}
 
 \newcommand{\decBackDoor}[0]{
  (Backdoor
@@ -73,23 +98,20 @@ $
 }$
 then
 
-\beq
-P(y|\cald \rvx = x)=
+\beqa
+P(y|\cald \rvx = x)
+&=&
 \sum_z
 P(y|x,z)P(z)
-\eeq
-\beq
-\xymatrix{
-\cald\rvx=x\ar[r]
-&y
-}\xymatrix{\\=}
+\\
+&=&
 \xymatrix{
 \sum z\ar[dr]
 \\
 x\ar[r]
 &y
 }
-\eeq
+\eeqa
 }
 
 
@@ -105,26 +127,21 @@ $
 \rvx\ar[r]&\rvm\ar[r]&\rvy
 }$
 then
-\beq
-P(y|\cald \rvx = x)=
+\beqa
+P(y|\cald \rvx = x)&=&
 \sum_m
 \left[
 \sum_{x'}P(y|x',m)P(x')
 \right]P(m|x)
-\eeq
-
-\beq
-\xymatrix{
-\cald\rvx=x\ar[r]
-&y
-}\xymatrix{\\=}
+\\
+&=&
 \xymatrix{
 &\sum x'\ar[dr]
 \\
 x´\ar[r]
 &\sum m\ar[r]&y
 }
-\eeq
+\eeqa
 }
 
 
@@ -141,25 +158,26 @@ If $
 &\rvx\ar[r]
 &\rvy
 }$ then
-\beq
+\begin{align}
 P(y|\cald \rvx = x)
-=\sum_{w,z}P(y|x, w,z)P(w,z)
-\eeq
-
-\beq
-\xymatrix{
+&=
+\sum_{w,z, z', z''}P(y|x,z')
+P(w|z')P(z')
+P(w|z'')P(z'')
+P(z|w)
 \\
-\cald\rvx=x\ar[r]&y
+&=
+\xymatrix{
+&{\sum z'}\ar[ddl]\ar[ddrr]
+\\
+&{\sum z''}\ar[dl]
+\\
+\sum w\ar[r]
+&\sum z
+&x\ar[r]
+&\rvy
 }
-\quad
-\xymatrix{
-\\=}
-\xymatrix{
-\sum w,z\ar[dr]
-\\
-x\ar[r]
-&y}
-\eeq
+\end{align}
 }
 
 \newcommand{\decWhy}[0]{(from Ref.\cite{book-why})
@@ -174,29 +192,20 @@ If $
 \\
 *++[F-o]{\rvu}\ar[u]\ar[urr]
 }$ then
-\beq
+\beqa
 P(y|\cald\rvz=z, x)
-=
+&=&
 \sum_w
 P(y|z,x,w)P(w)
-\eeq
-\beq
-\xymatrix{
-x\ar[rrd]
 \\
-&\cald\rvz=z\ar[r]
-&y
-}
-\quad
-\xymatrix{\\=}
-\quad
+&=&
 \xymatrix{
 x\ar[rrd]
 \\
 \sum w\ar@/_1pc/[rr]
 &z\ar[r]
 &y
-}\eeq
+}\eeqa
 }
 
 
@@ -214,15 +223,15 @@ If $
 \ar@{<-->}@/^1pc/[ru]
 \ar@{<-->}@/_1pc/[rr]
 &&\rvy
-}$
-where $\rvs\in\bool$ is a
+}$ 
+where $\rvs\in\bool$ is a 
 selection node,
 then
 
 \beq
 P^*(y|\cald \rvx=x, z)=P^*(y|x, z)
 \quad
-\text{(replace $\cald$ by $1$,
+\text{(replace $\cald$ by $1$, 
 keep $P^*$)}
 \eeq
 
@@ -263,8 +272,8 @@ If $
 \ar@{<-->}@/^1pc/[ru]
 \ar@{<-->}@/_1pc/[rr]
 &&\rvy
-}$
-where $\rvs\in\bool$ is a
+}$ 
+where $\rvs\in\bool$ is a 
 selection node,
 then
 
@@ -272,7 +281,7 @@ then
 P^*(y|\cald\rvx=x, z)=
 P(y|\cald\rvx=x, z)
 \quad
-\text{(replace $P^*$ by $P$,
+\text{(replace $P^*$ by $P$, 
 keep $\cald$)}
 \eeq
 
@@ -336,8 +345,8 @@ $
 &&\rvy
 \\
 \\
-}$
-where $\rvs\in\bool$ is a
+}$ 
+where $\rvs\in\bool$ is a 
 selection node,
 then
 
@@ -362,7 +371,7 @@ P^*(y|\cald \rvx=x)=
 \eeq
 }
 
-%\decTransportOne merged
+%\decTransportOne merged 
 %with decDirectTransport
 
 \newcommand{\decTransportNon}[0]
@@ -376,8 +385,8 @@ If $
 \\
 \rvx\ar[rr]
 &&\rvy
-}$
-where $\rvs\in\bool$ is a
+}$ 
+where $\rvs\in\bool$ is a 
 selection node,
 then
 
@@ -413,8 +422,8 @@ $\xymatrix{
 \\
 \rvx\ar[rr]\ar@{<-->}@/_1pc/[rr]
 &&\rvy
-}$
-where $\rvs\in\bool$ is a
+}$ 
+where $\rvs\in\bool$ is a 
 selection node,
 then
 
@@ -448,8 +457,8 @@ $\xymatrix{
 \rvx\ar[r]\ar@{<-->}@/_1pc/[rr]
 &\rvz\ar[r]
 &\rvy
-}$
-where $\rvs\in\bool$ is a
+}$ 
+where $\rvs\in\bool$ is a 
 selection node,
 then
 
@@ -482,7 +491,7 @@ x\ar[r]
 [0]{(Unconfounded Mediation,
 from Ref.\cite{pearl-2019review})
 
-If
+If 
 $\xymatrix{
 &\rvm\ar[rd]
 \\
@@ -515,12 +524,12 @@ P(m|d')
 }
 
 \newcommand{\decMediationPlus}
-[0]{(Mediation
+[0]{(Mediation 
 with universal prior $\rvxi$
 and universal confounder $\rvu$,
 from Ref.\cite{pearl-2019review})
 
-If
+If 
 $\xymatrix{
 &*++[F-o]{\rvu}\ar[dl]
 \ar[ddr]\ar[ddl]\ar[d]
@@ -559,11 +568,11 @@ P(m|d', \xi)P(\xi)
 }
 
 
-\newcommand{\decSeqBackDoor}[0]{(Sequential
-backdoor adjustment formula,
+\newcommand{\decSeqBackDoor}[0]{(Sequential 
+backdoor (SBD) adjustment formula,
 from Ref.\cite{pearl-robins-95})
 
-If
+If 
 \xymatrix{
 \rvz_0\ar[r]\ar@/^1pc/[rr]\ar[drrr]
 \ar[dd]
